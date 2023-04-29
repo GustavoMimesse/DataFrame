@@ -1,0 +1,18 @@
+import pandas as opcoesPandas
+import numpy as opcoesNumpy
+########################################
+#COLUMNS = Renomeamos os nomes das colunas
+numerosAleatorios = opcoesPandas.DataFrame(opcoesNumpy.random.rand(15, 10)*100, columns=["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"])
+print("\n ----- DataFrame Números Aleatórios 5 linhas e 1 coluna ------ \n")
+print(numerosAleatorios)
+#Exibe o nome de todas as colunas
+print(numerosAleatorios.columns)
+
+#Criando um DataFrame a partir de um dicionário
+notasAlunos_DataFrame = opcoesPandas.DataFrame({
+                                            "Nome": ["Ana", "Pedro", "João", "Marta", "Alan"],
+                                            "Média":[9, 7 ,10, 8, 9]
+                                                })
+# \n = quebra de linha (dar um enter, para deixar um espaço)
+print("\n------DataFrame Dicionário Notas Alunos\n")
+print(notasAlunos_DataFrame)
