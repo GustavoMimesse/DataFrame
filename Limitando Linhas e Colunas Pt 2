@@ -1,0 +1,67 @@
+import pandas as opcoesPandas
+#Abrindo Arquivo do Excel
+vendas_DF = opcoesPandas.read_excel("Vendas_Jan.xlsx")
+print(vendas_DF)
+print("\n")
+
+print("\n Indéx exibe apenas informações sobre as linhas do DataFrame\n")
+print(vendas_DF.index)
+print("\n")
+
+
+print("\n Columns exibe o nome de todas as colunas do DataFrame\n")
+print(vendas_DF.columns)
+print("\n")
+
+print("\n Head exibe as 5 primeiras linhas por padrão do DataFrame\n")
+print(vendas_DF.head())
+print("\n")
+
+print("\n Exibe as 10 primeiras linhas do DataFrame\n")
+print(vendas_DF.head(10))
+print("\n")
+
+print("\n Tail exibe apenas as últimas linhas\n")
+print(vendas_DF.tail(3))
+print("\n")
+
+print("\n Imprimindo a coluna Vendedor \n")
+print(vendas_DF["Vendedor"])
+print("\n")
+
+print("\n Imprimindo mais de uma coluna \n")
+print(vendas_DF[["Vendedor", "Total Vendas"]])
+print("\n")
+
+print("\n Imprimindo somente linhas de 1 ao 5\n")
+print(vendas_DF.loc[1:5])
+print("\n")
+#loc = localizar
+#Filtro vendas Leonardo Almeida
+
+vendas_Leonardo_Almeida_DF = vendas_DF.loc[vendas_DF["Vendedor"] == "Leonardo Almeida"]
+print("\n Imprimindo vendas do Leonardo Almeida\n")
+print(vendas_Leonardo_Almeida_DF)
+print("\n")
+
+#Filtrando vendas e colunas
+
+vendas_Leonardo_A = vendas_DF.loc[vendas_DF["Vendedor"] == "Leonardo Almeida", ["Vendedor", "Total Vendas"]]
+print("\n Imprimindo vendas e duas colunas do Leonardo Almeida\n")
+print(vendas_Leonardo_A)
+print("\n")
+
+print("\n vendedor do índice 5 \n")
+print(vendas_DF.loc[5, "Vendedor"])
+print("\n")
+
+print("\n Método Shape mostra quantas linhas e colunas tem o DF \n")
+print(vendas_DF.shape)
+print("\n")
+
+#T = Transforma linhas em colunas e colunas em linhas
+transformarLinhasEmColunas = vendas_DF.T
+
+print("\n Transforma linhas em colunas e colunas em linhas \n")
+print(transformarLinhasEmColunas)
+print("\n")
