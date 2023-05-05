@@ -1,0 +1,28 @@
+import pandas as pd
+#abrindo arquivo excel
+dadosDataFrame = pd.read_excel("Tratamento_Dados.xlsx")
+print(dadosDataFrame)
+print("\n")
+
+#DadosDataFrame["Total Vendas"] = dadosDataFrame["Total Vendas"] .fillna(dadosDataFrame["Total Vendas"].mean())
+
+#DadosDataFrame["Total Vendas"] = dadosDataFrame["Total Vendas"] .fillna(5)
+
+#ffill - preenche com o ultimo registro válido encontrado
+
+dadosDataFrame["Total Vendas"] = dadosDataFrame["Total Vendas"] .ffill()
+print("\n ffill - preenche os valores vazios com o ultimo registro encontrado \n")
+print(dadosDataFrame)
+print("\n")
+
+#value_counts - conta quantas linhas / vendas foram feitas
+qtdVendas = dadosDataFrame["Vendedor"].value_counts()
+print("\n value_counts - conta quantas linhas / vendas foram feitas \n")
+print(qtdVendas)
+print("\n")
+
+vendaVendedor = dadosDataFrame.groupby("Vendedor").sum()
+print("\n groupby - agrupa as informações \n")
+print(vendaVendedor)
+print("\n")
+
