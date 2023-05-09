@@ -1,0 +1,35 @@
+import pandas as pd
+#merge = traz informações de outros DF para nosso DF através de um identificador
+
+vendasDF = pd.read_excel("Vendas_Merge.xlsx")
+print("\n DataFrame Vendas \n")
+print(vendasDF)
+print("\n")
+#----------------------------------------------------
+vendedoresDF = pd.read_excel("Vendedores_Merge.xlsx")
+print("\n DataFrame Vendedores \n")
+print(vendedoresDF)
+print("\n")
+#----------------------------------------------------
+produtosDF = pd.read_excel("Produtos_Merge.xlsx")
+print("\n DataFrame Produtos \n")
+print(produtosDF)
+print("\n")
+#----------------------------------------------------
+vendasDF = vendasDF.merge(vendedoresDF)
+print("\n merge Vendas x Vendedores \n")
+print(vendasDF)
+print("\n")
+#----------------------------------------------------
+vendasDF = vendasDF.merge(produtosDF)
+print("\n merge Vendas x Produtos \n")
+print(vendasDF)
+print("\n")
+#----------------------------------------------------
+print(vendasDF.columns)
+print("\n")
+#----------------------------------------------------
+resumoDF = vendasDF[["Vendedor", "Produto", "Total Vendas"]]
+print("\n Resumo DataFrame Merge \n")
+print(resumoDF)
+print("\n")
