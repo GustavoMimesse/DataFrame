@@ -1,0 +1,43 @@
+import pandas as pd
+#mean = calcula a média
+#groupby = agrupar pela coluna de vendedor
+#-------------------------------------------
+vendas_DF = pd.read_excel("Groupby.xlsx")
+print("\n DataFrame Vendas \n")
+print(vendas_DF)
+print("\n")
+#-------------------------------------------
+mediaVendedor = vendas_DF.groupby(["Vendedor"]).mean
+print("\n Agrupando colunas e calculando a média \n")
+print(mediaVendedor)
+print("\n")
+#-------------------------------------------
+somaVendedor = vendas_DF.groupby(["Vendedor"]).sum
+print("\n Agrupando colunas e somando \n")
+print(somaVendedor)
+print("\n")
+#-------------------------------------------
+deixandoValoresEmBranco = vendas_DF.groupby(by=["Vendedor"], dropna=False).sum
+print("\n agrupando pela coluna vendedor e considerando valores em branco \n")
+print(deixandoValoresEmBranco)
+print("\n")
+#-------------------------------------------
+removendoValoresEmBranco = vendas_DF.groupby(by=["Vendedor"], dropna=True).sum
+print("\n agrupando pela coluna vendedor e remove valores em branco \n")
+print(removendoValoresEmBranco)
+print("\n")
+#-------------------------------------------
+agrupaDuasColunas = vendas_DF.groupby(["Vendedor", "Produto"]).sum
+print("\n agrupando pelas colunas de vendedor e produto e faz uma soma dos valores \n")
+print(agrupaDuasColunas)
+print("\n")
+#-------------------------------------------
+agrupaFrutasVendedor = vendas_DF.groupby(["Produto", "Vendedor"]).sum
+print("\n agrupando pelas colunas de produto e vendedor e faz uma soma dos valores \n")
+print(agrupaFrutasVendedor)
+print("\n")
+#-------------------------------------------
+agrupaDataVendedor = vendas_DF.groupby(["Data Venda", "Vendedor"]).sum
+print("\n agrupando pelas colunas de Data Venda e Vendedor e faz uma soma dos valores \n")
+print(agrupaDataVendedor)
+print("\n")
