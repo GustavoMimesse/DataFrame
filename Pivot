@@ -1,0 +1,19 @@
+import pandas as pd
+#index = linhas
+#columns = colunas
+#pivot - função não suporta agregação de valores repetidos
+#----------------------------------------------------------------------------
+baseLanchonete_DataFrame = pd.read_excel("Vendas_Lanchonete_Pivot.xlsx")
+print("\n Imprimindo dados \n")
+print(baseLanchonete_DataFrame)
+print("\n")
+#----------------------------------------------------------------------------
+pivotExemplo1 = baseLanchonete_DataFrame.pivot(index="Data Venda", columns="Cliente", values="Preço com Desconto")
+print("\n Imprimindo clientes/preço com desconto \n")
+print(pivotExemplo1)
+print("\n")
+#----------------------------------------------------------------------------
+pivotExemplo2 = baseLanchonete_DataFrame.pivot(index="Cliente", columns="Data Venda", values="Preço com Desconto")
+print("\n Imprimindo clientes/preço com desconto \n")
+print(pivotExemplo2)
+print("\n")
