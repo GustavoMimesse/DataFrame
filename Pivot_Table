@@ -1,0 +1,33 @@
+import pandas as pd
+#fillna = preenche valores vazios com um valor inserido.
+#----------------------------------------------------------------------------
+baseLanchonetes_DF = pd.read_excel("Vendas_Lanchonete_Pivot_Table.xlsx")
+print("\n Imprimindo Dados \n")
+print(baseLanchonetes_DF)
+print("\n")
+#----------------------------------------------------------------------------
+pivotExemplo1 = baseLanchonetes_DF.pivot_table(index="Data Venda", columns="Cliente", values="Preço com Desconto", aggfunc="sum")
+print("\n Imprimindo Data/Cliente/Preço com Desconto\n")
+print(pivotExemplo1)
+print("\n")
+#----------------------------------------------------------------------------
+pivotExemplo2 = baseLanchonetes_DF.pivot_table(index="Cliente", columns="Data Venda", values="Preço com Desconto", aggfunc="sum")
+print("\n Imprimindo Cliente/Data Venda/Preço com Desconto\n")
+print(pivotExemplo2)
+print("\n")
+#----------------------------------------------------------------------------
+pivotExemplo3 = baseLanchonetes_DF.pivot_table(index="Data Venda", columns="Cliente", values=["Preço Total","Preço com Desconto"], aggfunc="sum")
+print("\n Imprimindo Cliente/Preço Total/Preço com Desconto\n")
+print(pivotExemplo3)
+print("\n")
+#----------------------------------------------------------------------------
+pivotExemplo4 = baseLanchonetes_DF.pivot_table(index="Data Venda", columns=["Cliente", "Produto"], values=["Preço Total" , "Preço com Desconto"], aggfunc="sum")
+print("\n Imprimindo Cliente/Produto/Preço com Desconto\n")
+print(pivotExemplo4)
+print("\n")
+#----------------------------------------------------------------------------
+pivotExemplo4["Preço com Desconto"] = pivotExemplo4["Preço com Desconto"].fillna(0)
+pivotExemplo4["Preço com Desconto"] = pivotExemplo4["Preço Total"].fillna(0)
+print("\n Trata NaN por ZERO \n")
+print(pivotExemplo4)
+print("\n")
