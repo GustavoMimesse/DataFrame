@@ -1,0 +1,43 @@
+import pandas as pd
+import matplotlib.pyplot as grafico
+#------------------------------------------------
+#plot = gráfico de linhas
+#show = cria e apresenta o gráfico
+#xlabel = descrição eixo x
+#ylabel = descrição eixo y
+#title = título
+#label = legenda
+#legend = mostra a legenda
+#linestyle = estilo da linha
+#lw = largura da linha
+#xticks = escala de números eixo x
+#axis =define o mínimo e o máximo para o eixo x e y
+#auto = ajusta o eixo x e y de forma automática
+#annotate = anotação
+#------------------------------------------------
+frutas_DF = pd.read_excel("Base_Grafico.xlsx")
+print("\n DataFrame Frutas \n")
+print(frutas_DF)
+print("\n")
+#-----------------------------------------------
+frutas = frutas_DF["Frutas"]
+total = frutas_DF["Total Vendas"]
+#------------------------------------------------
+grafico.plot(frutas_DF["Frutas"], frutas_DF["Total Vendas"], label="Total Vendas", linestyle="solid", lw="2", color="r")
+grafico.title("Vendas Frutas")
+grafico.xlabel("Nome das Frutas", size=20)
+grafico.ylabel("Total de Vendas",size=20)
+grafico.legend()
+grafico.xticks([0, 1, 2, 3, 4])
+grafico.xticks([0, 20, 40, 60, 80, 100])
+grafico.axis(xmin=0, xmax=4, ymin=0, ymax=80)
+grafico.axis("auto")
+#grafico.annotate("Abacate", (0, 10))
+#grafico.annotate("Banana", (1, 52))
+grafico.annotate(total[0], (frutas[0],total[0]))
+grafico.annotate(total[1], (frutas[1],total[1]))
+grafico.annotate(total[2], (frutas[2],total[2]))
+grafico.annotate(total[3], (frutas[3],total[3]))
+grafico.annotate(total[4], (frutas[4],total[4]))
+grafico.savefig("ImagemGrafico.png")
+grafico.show()
