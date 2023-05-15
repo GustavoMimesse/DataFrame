@@ -10,7 +10,7 @@ print("\n DataFrame Frutas \n")
 print(frutas_DF)
 print("\n")
 #-----------------------------------------------
-figura = grafico.figure(figsize=(100, 10))
+figura = grafico.figure(figsize=(40, 20))
 frutas = frutas_DF["Frutas"]
 total = frutas_DF["Total Vendas"]
 #-----------------------------------------------
