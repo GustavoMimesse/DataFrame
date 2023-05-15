@@ -1,0 +1,28 @@
+import pandas as pd
+#-------------------------------------------------
+planilha_id = "1uxYa8NKhoPQVAO_LNqNWxyn30qn5S_qD"
+dados_DF = pd.read_csv(f"https://docs.google.com/spreadsheets/d/{planilha_id}/export?format=csv")
+#-------------------------------------------------
+print("\n DataFrame Google Sheets \n")
+print(dados_DF)
+print("\n")
+#-------------------------------------------------
+# Exe. 1 = Deixar somente coluna de Vendedor e de Total Vendas (FEITO)
+# Exe. 2 = Com o groupby use a coluna de vendedor para criar um resumo do vendedor e a soma total das vendas
+# Exe. 3 = Salve o dataFrame como um arquivo de Excel csv
+#-------------------------------------------------
+dataVendaEProduto = dados_DF.drop(columns=["Data Venda", "Produto"])
+print("\n drop = usamos para deletar as colunas Data Venda e Total Vendas \n ")
+print(dataVendaEProduto)
+print("\n")
+#-------------------------------------------------
+dataVendaEProduto["Total Vendas"] = dataVendaEProduto["Total Vendas"].str.replace(",", ".")
+#-------------------------------------------------
+dataVendaEProduto["Total Vendas"] = dataVendaEProduto["Total Vendas"].astype(float)
+#-------------------------------------------------
+groupbyVendedores = dataVendaEProduto.groupby(["Vendedor"]).sum()
+print("\n 2 - Com o groupby use a coluna de vendedor para criar um resumo do vendedor e a soma total das vendas \n")
+print(groupbyVendedores)
+print("\n")
+#-------------------------------------------------
+groupbyVendedores.to_csv("Resposta_Exercicio.csv")
